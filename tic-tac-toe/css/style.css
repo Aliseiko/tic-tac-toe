@@ -1,0 +1,158 @@
+:root {
+  --color-blue: #1f5987;
+  --color-yellow: #f3cc10;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: #fff;
+  transition: 0.3s;
+}
+
+a:hover {
+  color: #808080;
+}
+
+body {
+  font-family: Roboto, sans-serif;
+  color: #fff;
+  background-color: var(--color-blue);
+}
+
+.wrapper {
+  /*min-width: 480px;*/
+  /*max-width: 1440px;*/
+  margin: 0 auto;
+}
+
+.header {
+  background-color: #000;
+}
+
+.container {
+  /*min-width: 480px;*/
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 5px;
+  text-align: center;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 25px;
+  line-height: 2;
+}
+
+.moves-table {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  font-size: 20px;
+  line-height: 2;
+}
+
+.game-wrapper {
+  display: flex;
+  flex: 1 1 auto;
+  /*justify-content: center;*/
+  /*align-content: flex-end;*/
+}
+
+.game-table {
+  display: flex;
+  /*padding: 5px;*/
+  align-content: space-between;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 470px;
+  /*gap: 10px;*/
+  height: 470px;
+  margin: auto 0;
+  background-color: var(--color-yellow);
+}
+
+.game-table__game-cell {
+  width: 150px;
+  height: 150px;
+  background-color: var(--color-blue);
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 0;
+}
+
+.button {
+  font-size: 20px;
+  color: #fff;
+  border: 2px solid #fff;
+  background-color: transparent;
+}
+
+.records-button,
+.sound-button {
+  width: 60px;
+  height: 60px;
+
+  border-radius: 50%;
+
+
+}
+
+.new-game-button {
+
+  padding-right: 10px;
+  padding-left: 10px;
+  line-height: 50px;
+  border-radius: 50px;
+}
+
+
+.footer {
+  background-color: #000;
+}
+
+.footer__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 20px;
+}
+
+@media (max-width: 480px) {
+  .footer__container {
+    padding: 5px 10px;
+  }
+}
+
+.footer__copyright {
+  display: flex;
+  line-height: 2.5;
+  gap: 20px;
+}
+
+.rsschool__img {
+  height: 30px;
+  transition: 0.3s;
+  fill: #fff;
+}
+
+.rsschool__img:hover {
+  fill: #808080;
+}
