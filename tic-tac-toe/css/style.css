@@ -243,3 +243,28 @@ body {
     opacity: 1
   }
 }
+
+.show-winner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+  background-color: #000;
+}
+
+.winner-plate {
+  padding: 20px;
+  border: 3px solid #fff;
+  background-color: var(--color-blue);
+}
+
+.winner-title {
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--color-yellow);
+}

@@ -22,26 +22,14 @@
 
   <main class="main  container">
     <div class="moves-table container">
-      <p class="moves-table__moves">moves counter: <span class="moves-count">10</span></p>
+      <p class="moves-table__moves">moves counter: <span class="moves-count">0</span></p>
       <p class="moves-table__next-move">next move: <span class="next-move">X</span></p>
     </div>
 
     <div class="game-wrapper container">
       <div class="game-table">
-        <div class="game-table__game-cell used" data-cellnumber="1">
-
-         <!-- <div class="x-figure">
-            <span class="x-line-top"></span>
-            <span class="x-line-bottom"></span>
-          </div>-->
-
-        </div>
-        <div class="game-table__game-cell" data-cellnumber="2">
-
-<!--          <div class="o-figure"></div>-->
-
-
-        </div>
+        <div class="game-table__game-cell" data-cellnumber="1"></div>
+        <div class="game-table__game-cell" data-cellnumber="2"></div>
         <div class="game-table__game-cell" data-cellnumber="3"></div>
         <div class="game-table__game-cell" data-cellnumber="4"></div>
         <div class="game-table__game-cell" data-cellnumber="5"></div>
@@ -51,12 +39,6 @@
         <div class="game-table__game-cell" data-cellnumber="9"></div>
       </div>
     </div>
-
-    <div>
-
-    </div>
-
-
 
     <div class="options">
       <button class="records-button button" type="button"></button>
@@ -86,6 +68,13 @@
     </div>
 
   </footer>
+</div>
+
+<div class="show-winner">
+  <div class="winner-plate">
+    <p class="winner-title">X won!</p>
+    <button class="winner-plate-close-button new-game-button button" type="button">close</button>
+  </div>
 </div>
 
 <script src="js/index.js"></script>
