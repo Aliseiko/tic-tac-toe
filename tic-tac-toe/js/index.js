@@ -27,14 +27,30 @@ document.querySelector('.game-table').addEventListener('click', (event) => {
         addMove(currentFigure);
         movesCount++;
         if (movesCount > 4) checkWin(currentFigure);
-        currentFigure = (currentFigure === 'X') ? 'O' : 'X';
+        if (!winner) currentFigure = (currentFigure === 'X') ? 'O' : 'X';
         figure = (currentFigure === 'X') ? X : O;
+        if (winner) {
+            showCloseWinner();
+            toggleCover();
+        }
         showMovesCount();
         showNextFigure();
-        console.log(winner)
+        if (movesCount >= 9 && !winner) {
+            showCloseWinner();
+            toggleCover();
+        }
     }
-
 })
+
+// ---------------- close button -----------------
+document.querySelector('.winner-plate-close-button').onclick = function () {
+    showCloseWinner();
+    toggleCover();
+}
+
+// ----------------- new game button --------------
+document.querySelector('.new-game-button').onclick = reset;
+
 
 function setFigure(figure) {
     event.target.innerHTML = figure;
@@ -69,6 +85,24 @@ function checkWin(fig) {
     }
 }
 
-function showWinner() {
+function showCloseWinner() {
+    document.querySelector('.winner-title').textContent = (winner) ? winner + ' won!' : 'No winners';
+    document.querySelector('.show-winner').classList.toggle('deactive');
+}
 
+function toggleCover() {
+    document.querySelector('.cover').classList.toggle('deactive');
+}
+
+function reset() {
+    movesX.length = 0;
+    movesO.length = 0;
+    figure = X;
+    currentFigure = 'X';
+    movesCount = 0;
+    winner = undefined;
+    showMovesCount();
+    showNextFigure();
+    document.querySelectorAll('.x-figure, .o-figure').forEach(el => el.remove());
+    document.querySelectorAll('.used').forEach(el => el.classList.remove('used'));
 }
