@@ -17,7 +17,8 @@ let figure = X,
     currentFigure = 'X',
     movesCount = 0,
     winner,
-    recordsTable = '';
+    recordsTable = '',
+    isSoundOn = false;
 
 // ------------------- add eventlistner to gametable ----------------
 document.querySelector('.game-table').addEventListener('click', (event) => {
@@ -27,6 +28,7 @@ document.querySelector('.game-table').addEventListener('click', (event) => {
         setFigure(figure);
         setUsedClass();
         addMove(currentFigure);
+        if (isSoundOn) playSound('set');
         movesCount++;
         if (movesCount > 4) checkWin(currentFigure);
         if (!winner) currentFigure = (currentFigure === 'X') ? 'O' : 'X';
@@ -35,6 +37,7 @@ document.querySelector('.game-table').addEventListener('click', (event) => {
             showCloseWinner();
             toggleCover();
             saveRecord();
+            if (isSoundOn) playSound('win');
         }
         showMovesCount();
         showNextFigure();
@@ -60,6 +63,11 @@ document.querySelector('.records-button').onclick = function () {
 document.querySelector('.records-plate-close-button').onclick = function () {
     closeRecords();
     toggleCover();
+}
+
+// ----------------- sound button --------------------------
+document.querySelector('.sound-button').onclick = function () {
+    turnOnOffSound();
 }
 
 function setFigure(figure) {
@@ -140,4 +148,23 @@ function closeRecords() {
     document.querySelector('.show-records').classList.add('deactive');
     recordsTable = '';
     document.querySelectorAll('.records-line').forEach(el => el.remove());
+}
+
+function turnOnOffSound() {
+    isSoundOn = !isSoundOn;
+    document.querySelector('.sound-button').style.backgroundImage = (isSoundOn) ? 'url("./assets/svg/sound-on.svg")' : 'url("./assets/svg/sound-off.svg")';
+    const audioMusic = document.querySelector('.audio-music');
+
+    if (isSoundOn) {
+        // audioMusic.currentTime = 0;
+        audioMusic.play();
+    } else {
+        audioMusic.pause();
+    }
+}
+
+function playSound(file) {
+    const audioSound = document.querySelector('.audio-sound');
+    audioSound.src = `assets/audio/${file}.mp3`;
+    audioSound.play();
 }
