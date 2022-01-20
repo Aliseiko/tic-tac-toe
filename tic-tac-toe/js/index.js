@@ -2,7 +2,7 @@ const X = '<div class="x-figure"><span class="x-line-top"></span><span class="x-
     O = '<div class="o-figure"></div>',
     movesX = [],
     movesO = [],
-    records = [],
+    records = JSON.parse(localStorage.getItem('records')) || [],
     winCombos = [[1, 2, 3],
         [4, 5, 6],
         [7, 8, 9],
@@ -16,7 +16,8 @@ const X = '<div class="x-figure"><span class="x-line-top"></span><span class="x-
 let figure = X,
     currentFigure = 'X',
     movesCount = 0,
-    winner;
+    winner,
+    recordsTable = '';
 
 // ------------------- add eventlistner to gametable ----------------
 document.querySelector('.game-table').addEventListener('click', (event) => {
@@ -37,14 +38,10 @@ document.querySelector('.game-table').addEventListener('click', (event) => {
         }
         showMovesCount();
         showNextFigure();
-        /*if (movesCount >= 9 && !winner) {
-            showCloseWinner();
-            toggleCover();
-        }*/
     }
 })
 
-// ---------------- close button -----------------
+// ---------------- close winner button -----------------
 document.querySelector('.winner-plate-close-button').onclick = function () {
     showCloseWinner();
     toggleCover();
@@ -53,6 +50,17 @@ document.querySelector('.winner-plate-close-button').onclick = function () {
 // ----------------- new game button --------------
 document.querySelector('.new-game-button').onclick = reset;
 
+// ------------------ show records button ---------
+document.querySelector('.records-button').onclick = function () {
+    showRecords();
+    toggleCover();
+}
+
+// ---------------- close records button -----------------
+document.querySelector('.records-plate-close-button').onclick = function () {
+    closeRecords();
+    toggleCover();
+}
 
 function setFigure(figure) {
     event.target.innerHTML = figure;
@@ -111,14 +119,25 @@ function reset() {
 
 function saveRecord() {
     let now = new Date(),
-        recordsEntry = {
-            date: '',
-            winner: '',
-            moves: ''
-        };
+        recordsEntry = {};
     recordsEntry.date = now.toLocaleDateString('ru-RU');
     recordsEntry.winner = (winner) ? winner + ' won!' : 'No winners';
     recordsEntry.moves = movesCount;
     records.push(recordsEntry);
     if (records.length > 10) records.shift();
+    localStorage.setItem('records', JSON.stringify(records));
+}
+
+function showRecords() {
+    for (let i = 1; i <= records.length; i++) {
+        recordsTable += `<tr class="records-line"><td>${i}</td><td>${records[records.length - i].date}</td><td>${records[records.length - i].winner}</td><td>${records[records.length - i].moves}</td></tr>`;
+    }
+    document.querySelector('.records-table').insertAdjacentHTML('beforeend', recordsTable);
+    document.querySelector('.show-records').classList.remove('deactive');
+}
+
+function closeRecords() {
+    document.querySelector('.show-records').classList.add('deactive');
+    recordsTable = '';
+    document.querySelectorAll('.records-line').forEach(el => el.remove());
 }

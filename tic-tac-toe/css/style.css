@@ -289,10 +289,10 @@ body {
 }
 
 .records-table {
-  min-width: 400px;
-  /*border: 1px solid #fff;*/
-  font-size: 20px;
   width: 100%;
+  min-width: 400px;
+  padding-bottom: 20px;
+  font-size: 20px;
 }
 
 .table-number,
