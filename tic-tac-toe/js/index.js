@@ -2,6 +2,7 @@ const X = '<div class="x-figure"><span class="x-line-top"></span><span class="x-
     O = '<div class="o-figure"></div>',
     movesX = [],
     movesO = [],
+    records = [],
     winCombos = [[1, 2, 3],
         [4, 5, 6],
         [7, 8, 9],
@@ -29,16 +30,17 @@ document.querySelector('.game-table').addEventListener('click', (event) => {
         if (movesCount > 4) checkWin(currentFigure);
         if (!winner) currentFigure = (currentFigure === 'X') ? 'O' : 'X';
         figure = (currentFigure === 'X') ? X : O;
-        if (winner) {
+        if (winner || (movesCount >= 9 && !winner)) {
             showCloseWinner();
             toggleCover();
+            saveRecord();
         }
         showMovesCount();
         showNextFigure();
-        if (movesCount >= 9 && !winner) {
+        /*if (movesCount >= 9 && !winner) {
             showCloseWinner();
             toggleCover();
-        }
+        }*/
     }
 })
 
@@ -105,4 +107,18 @@ function reset() {
     showNextFigure();
     document.querySelectorAll('.x-figure, .o-figure').forEach(el => el.remove());
     document.querySelectorAll('.used').forEach(el => el.classList.remove('used'));
+}
+
+function saveRecord() {
+    let now = new Date(),
+        recordsEntry = {
+            date: '',
+            winner: '',
+            moves: ''
+        };
+    recordsEntry.date = now.toLocaleDateString('ru-RU');
+    recordsEntry.winner = (winner) ? winner + ' won!' : 'No winners';
+    recordsEntry.moves = movesCount;
+    records.push(recordsEntry);
+    if (records.length > 10) records.shift();
 }

@@ -255,7 +255,8 @@ body {
   background-color: #000;
 }
 
-.show-winner {
+.show-winner,
+.show-records {
   position: absolute;
   top: 0;
   right: 0;
@@ -267,14 +268,16 @@ body {
   min-width: 480px;
 }
 
-.winner-plate {
+.winner-plate,
+.records-plate {
   padding: 20px 40px;
   text-align: center;
   border: 3px solid #fff;
   background-color: var(--color-blue);
 }
 
-.winner-title {
+.winner-title,
+.records-title {
   padding-bottom: 20px;
   font-size: 40px;
   font-weight: 700;
@@ -283,4 +286,27 @@ body {
 
 .deactive {
   display: none;
+}
+
+.records-table {
+  min-width: 400px;
+  /*border: 1px solid #fff;*/
+  font-size: 20px;
+  width: 100%;
+}
+
+.table-number,
+.table-date,
+.table-winner,
+.table-moves {
+  width: 35%;
+  border-bottom: 1px solid #fff;
+}
+
+.table-moves {
+  width: 20%;
+}
+
+.table-number {
+  width: 10%;
 }
