@@ -104,7 +104,7 @@ function checkWin(fig) {
 }
 
 function showCloseWinner() {
-    document.querySelector('.winner-title').textContent = (winner) ? winner + ' won!' : 'No winners';
+    document.querySelector('.winner-title').innerHTML = ((winner) ? winner + ' won!' : 'No winners') + `<br>With ${movesCount} moves`;
     document.querySelector('.show-winner').classList.toggle('deactive');
 }
 
