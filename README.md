@@ -1,2 +1,2 @@
-# aliseiko-JSFEPRESCHOOL
-Private repository for @aliseiko
+# tic-tac-toe
+tic-tac-toe RSS project

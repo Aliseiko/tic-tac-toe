@@ -88,18 +88,14 @@ body {
 .game-wrapper {
   display: flex;
   flex: 1 1 auto;
-  /*justify-content: center;*/
-  /*align-content: flex-end;*/
 }
 
 .game-table {
   display: flex;
-  /*padding: 5px;*/
   align-content: space-between;
   flex-wrap: wrap;
   justify-content: space-between;
   width: 470px;
-  /*gap: 10px;*/
   height: 470px;
   margin: auto 0;
   background-color: var(--color-yellow);
